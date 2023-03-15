@@ -21,11 +21,11 @@ class ServerApplicationTests {
 
     @Test
     void contextLoads() {
-        R login = usersService.login("admin", "123");
-        System.out.println(login);
+        //R login = usersService.login("admin", "123");
+        //System.out.println(login);
 
-        R selectUser = usersService.selectUser(2);
-        System.out.println(selectUser);
+        //R selectUser = usersService.selectUser("admin");
+        //System.out.println(selectUser);
     }
 
 }

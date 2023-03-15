@@ -12,15 +12,20 @@ spring:
     url: jdbc:mysql://localhost:3306/taobaoapp?useSSL=false&serverTimezone=UTC
   main:
     banner-mode: off
-  security:
-    user:
-      name: root
-      password: c123
-      roles: root
+#  security:
+#    user:
+#      name: root
+#      password: c123
+#      roles: root
 #日志
-#logging:
-#  level:
-#    root: warn
+logging:
+  level:
+    root: warn
 mybatis-plus:
   global-config:
     banner: off
+jwt:
+  token:
+    header: Authorization
+    expire: 604800
+    secrst: qodkvjeifksivjdugjdkendjjddjnsfr
