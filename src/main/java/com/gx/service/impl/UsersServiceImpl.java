@@ -1,5 +1,6 @@
 package com.gx.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.gx.entity.Users;
@@ -26,7 +27,8 @@ public class UsersServiceImpl extends ServiceImpl<UsersMapper, Users> implements
     }
 
     @Override
-    public R selectUser(String account) {
-        return R.ok(getOne(new QueryWrapper<Users>().eq("account", account))).setCode(1).setMsg(null);
+    public R selectUser(Integer userId) {
+        Users one = getById(userId);
+        return one == null? R.failed("查询失败！") : R.ok(one).setCode(1).setMsg(null);
     }
 }

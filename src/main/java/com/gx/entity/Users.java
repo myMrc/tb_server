@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import javax.persistence.Column;
-
 /**
  * <p>
  * 
@@ -29,8 +27,7 @@ public class Users implements Serializable {
     @TableId(value = "UsersID", type = IdType.AUTO)
     private Integer UsersID;
 
-    @Column(name = "UserentityID")
-    private Integer Userentityid;
+    private Integer UserentityID;
 
     private String Account;
 

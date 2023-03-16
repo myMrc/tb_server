@@ -4,8 +4,10 @@ import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.api.R;
 import com.gx.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
@@ -30,9 +32,10 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
         ServletOutputStream outputStream = response.getOutputStream();
 
         //生成jwt
-        String token = jwtUtil.setToken(authentication.getName());
+        UserLogin userLogin = (UserLogin)authentication.getPrincipal();
+        String token = jwtUtil.setToken(userLogin.getUserId().toString());
         response.setHeader(jwtUtil.getHeader(),token);
-        R r = R.ok(authentication.getPrincipal()).setMsg("登录成功").setCode(1);
+        R r = R.ok(userLogin.getUserId()).setMsg("登录成功").setCode(1);
 
         outputStream.write(JSONUtil.toJsonStr(r).getBytes("UTF-8"));
         outputStream.flush();

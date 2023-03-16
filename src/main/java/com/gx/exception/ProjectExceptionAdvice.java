@@ -19,8 +19,8 @@ public class ProjectExceptionAdvice {
         return R.failed("业务异常").setCode(500);
     }
 
-    @ExceptionHandler(CaptchaException.class)
-    public R doCaptchaException(CaptchaException ex) { return R.failed("验证码异常").setCode(500); }
+    //@ExceptionHandler(CaptchaException.class)
+    //public R doCaptchaException(CaptchaException ex) { return R.failed("验证码异常").setCode(500); }
 
     @ExceptionHandler(Exception.class)
     public R doException(Exception ex) { return R.failed("数据异常1").setCode(500); }

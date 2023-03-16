@@ -20,5 +20,5 @@ public interface IUsersService extends IService<Users> {
 
     Users login(String account);
 
-    R selectUser(String account);
+    R selectUser(Integer userId);
 }

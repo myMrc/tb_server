@@ -20,12 +20,13 @@ public class JwtUtil {
     private String header;
 
     //生成
-    public String setToken(String username){
+    public String setToken(String userId){
         Date nowDate = new Date();
         Date expireDate = new Date(nowDate.getTime() + 1000 * expire);
         return Jwts.builder()
                 .setHeaderParam("typ","JWT")
-                .setSubject(username)
+                //.setSubject(userId)
+                .setId(userId)
                 .setIssuedAt(nowDate)
                 .setExpiration(expireDate)
                 .signWith(SignatureAlgorithm.HS512,secrst)

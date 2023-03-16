@@ -1,5 +1,6 @@
 package com.gx.service;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.gx.entity.Supplierinfo;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ISupplierinfoService extends IService<Supplierinfo> {
 
+    R selectSup(Integer userId);
 }

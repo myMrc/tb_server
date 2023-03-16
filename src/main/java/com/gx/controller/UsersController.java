@@ -26,6 +26,6 @@ public class UsersController {
 
     @GetMapping
     public R selectUser(Principal principal){
-        return usersService.selectUser(principal.getName());
+        return usersService.selectUser(Integer.parseInt(principal.getName()));
     }
 }
