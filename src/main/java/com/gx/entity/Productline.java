@@ -36,6 +36,4 @@ public class Productline implements Serializable {
     private Integer ScopeBegin;
 
     private String ProductLineName;
-
-
 }

@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface IDistributorinfoService extends IService<Distributorinfo> {
 
     R selectDis(int userId);
+
+    R updateDis(Distributorinfo dis);
 }

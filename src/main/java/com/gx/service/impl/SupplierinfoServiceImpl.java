@@ -25,4 +25,10 @@ public class SupplierinfoServiceImpl extends ServiceImpl<SupplierinfoMapper, Sup
         Supplierinfo one = getOne(new LambdaQueryWrapper<Supplierinfo>().eq(Supplierinfo::getUsersID, userId));
         return one == null? R.failed("查询失败！") : R.ok(one).setCode(1).setMsg(null);
     }
+
+    @Override
+    public R updateSup(Supplierinfo sup) {
+        boolean sp = updateById(sup);
+        return sp == true? R.failed("修改成功").setCode(1) : R.failed("修改失败");
+    }
 }

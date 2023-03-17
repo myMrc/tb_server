@@ -2,6 +2,8 @@ package com.gx.controller;
 
 
 import com.baomidou.mybatisplus.extension.api.R;
+import com.gx.entity.Distributorinfo;
+import com.gx.entity.Supplierinfo;
 import com.gx.security.UserLogin;
 import com.gx.service.ISupplierinfoService;
 import com.gx.service.IUsersService;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -34,5 +37,10 @@ public class SupplierinfoController {
     @GetMapping
     public R selectSup(Principal principal){
         return supService.selectSup(Integer.parseInt(principal.getName()));
+    }
+
+    @PutMapping
+    public R updateSup(Supplierinfo sup){
+        return supService.updateSup(sup);
     }
 }

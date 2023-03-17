@@ -15,4 +15,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 public interface ISupplierinfoService extends IService<Supplierinfo> {
 
     R selectSup(Integer userId);
+
+    R updateSup(Supplierinfo sup);
 }

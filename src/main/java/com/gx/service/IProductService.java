@@ -1,5 +1,6 @@
 package com.gx.service;
 
+import com.baomidou.mybatisplus.extension.api.R;
 import com.gx.entity.Product;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -13,4 +14,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IProductService extends IService<Product> {
 
+    R selectSupPro(int userId);
 }
