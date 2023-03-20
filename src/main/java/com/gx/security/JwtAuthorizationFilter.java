@@ -1,16 +1,15 @@
 package com.gx.security;
 
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.json.JSONUtil;
 import com.gx.util.JwtUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.config.annotation.SecurityConfigurer;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
-import sun.plugin.liveconnect.SecurityContextHelper;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -41,8 +40,8 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         if (jwtUtil.isToken(claims)) {
             throw new JwtException("token 过期");
         }
-        String userId = claims.getId();
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(userId,null,null);
+        String user = JSONUtil.toJsonStr(claims.get("user"));
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user,null);
         SecurityContextHolder.getContext().setAuthentication(token);
         chain.doFilter(request,response);
     }

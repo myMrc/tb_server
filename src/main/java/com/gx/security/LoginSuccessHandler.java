@@ -2,7 +2,6 @@ package com.gx.security;
 
 import cn.hutool.json.JSONUtil;
 import com.baomidou.mybatisplus.extension.api.R;
-import com.gx.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -22,8 +21,8 @@ import java.io.IOException;
 @Component
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
-    @Autowired
-    JwtUtil jwtUtil;
+    //@Autowired
+    //JwtUtil jwtUtil;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
@@ -33,8 +32,8 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         //生成jwt
         UserLogin userLogin = (UserLogin)authentication.getPrincipal();
-        String token = jwtUtil.setToken(userLogin.getUserId().toString());
-        response.setHeader(jwtUtil.getHeader(),token);
+        //String token = jwtUtil.setToken(userLogin.getUserId().toString());
+        //response.setHeader(jwtUtil.getHeader(),token);
         R r = R.ok(userLogin.getUserId()).setMsg("登录成功").setCode(1);
 
         outputStream.write(JSONUtil.toJsonStr(r).getBytes("UTF-8"));

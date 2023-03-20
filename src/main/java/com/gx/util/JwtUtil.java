@@ -1,5 +1,6 @@
 package com.gx.util;
 
+import com.gx.entity.TUser;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -20,13 +21,12 @@ public class JwtUtil {
     private String header;
 
     //生成
-    public String setToken(String userId){
+    public String setToken(TUser user){
         Date nowDate = new Date();
         Date expireDate = new Date(nowDate.getTime() + 1000 * expire);
         return Jwts.builder()
                 .setHeaderParam("typ","JWT")
-                //.setSubject(userId)
-                .setId(userId)
+                .claim("user", user)
                 .setIssuedAt(nowDate)
                 .setExpiration(expireDate)
                 .signWith(SignatureAlgorithm.HS512,secrst)
