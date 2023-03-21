@@ -8,10 +8,7 @@ import com.gx.entity.TUser;
 import com.gx.service.ITSupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -30,6 +27,14 @@ public class TSupplierController {
     @Autowired
     ITSupplierService supplierService;
 
+    @GetMapping
+    public R selectSupplier(Principal principal){
+
+        Integer userId = JSONUtil.toBean(principal.getName(), TUser.class).getUserId();
+
+        return supplierService.selectSupplier(userId);
+    }
+
     @PostMapping
     public R addSupplier(TSupplier supplier,Principal principal){
 
@@ -38,5 +43,15 @@ public class TSupplierController {
         supplier.setUserId(JSONUtil.toBean(principal.getName(), TUser.class).getUserId());
 
         return supplierService.addSupplier(supplier);
+    }
+
+    @PutMapping
+    public R updateSupplier(TSupplier supplier,Principal principal){
+
+        if(StringUtils.isEmpty(supplier.getCompanyName()))return R.failed("请输入名称！");
+
+        supplier.setUserId(JSONUtil.toBean(principal.getName(), TUser.class).getUserId());
+
+        return supplierService.updateSupplier(supplier);
     }
 }

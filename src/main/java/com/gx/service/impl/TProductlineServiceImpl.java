@@ -1,5 +1,7 @@
 package com.gx.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.gx.entity.TProductline;
 import com.gx.mapper.TProductlineMapper;
 import com.gx.service.ITProductlineService;
@@ -17,4 +19,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TProductlineServiceImpl extends ServiceImpl<TProductlineMapper, TProductline> implements ITProductlineService {
 
+    @Override
+    public R selectProductline(Integer userId) {
+
+        return null;
+        //list(new LambdaQueryWrapper<TProductline>())
+    }
 }

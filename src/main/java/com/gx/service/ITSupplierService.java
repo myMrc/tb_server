@@ -14,5 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITSupplierService extends IService<TSupplier> {
 
+    R selectSupplier(Integer userId);
+
     R addSupplier(TSupplier supplier);
+
+    R updateSupplier(TSupplier supplier);
 }

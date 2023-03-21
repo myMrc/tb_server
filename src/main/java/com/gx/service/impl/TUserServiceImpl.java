@@ -42,7 +42,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
         boolean save = save(user.setReloId(3));
 
-        return save ? R.ok(save).setCode(1).setMsg("注册成功") : R.failed("注册失败");
+        return save ? R.ok(save).setCode(1).setMsg("注册成功") : R.failed("注册失败!");
     }
 
     @Override
@@ -50,7 +50,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
         boolean update = updateById(user);
 
-        return update ? R.ok(update).setCode(1).setMsg("更新成功") : R.failed("更新失败");
+        return update ? R.ok(update).setCode(1).setMsg("更新成功") : R.failed("更新失败!");
     }
 
     @Override
@@ -58,7 +58,7 @@ public class TUserServiceImpl extends ServiceImpl<TUserMapper, TUser> implements
 
         TUser user = getById(userId);
 
-        return user == null? R.failed("查询失败！") : R.ok(user).setCode(1).setMsg(null);
+        return user == null? R.failed("查询失败！") : R.ok(user).setCode(1).setMsg("查询成功");
     }
 
     @Override

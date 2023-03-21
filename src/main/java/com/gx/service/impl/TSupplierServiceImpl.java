@@ -20,6 +20,14 @@ import org.springframework.stereotype.Service;
 public class TSupplierServiceImpl extends ServiceImpl<TSupplierMapper, TSupplier> implements ITSupplierService {
 
     @Override
+    public R selectSupplier(Integer userId) {
+
+        TSupplier one = getOne(new LambdaQueryWrapper<TSupplier>().eq(TSupplier::getUserId, userId));
+
+        return one == null ? R.failed("查询失败！") : R.ok(one).setCode(1).setMsg("查询成功");
+    }
+
+    @Override
     public R addSupplier(TSupplier supplier) {
 
         TSupplier one = getOne(new LambdaQueryWrapper<TSupplier>().eq(TSupplier::getUserId, supplier.getUserId()));
@@ -28,6 +36,14 @@ public class TSupplierServiceImpl extends ServiceImpl<TSupplierMapper, TSupplier
 
         boolean save = save(supplier);
 
-        return save ? R.ok(save).setCode(1).setMsg("保存成功") : R.failed("保存失败");
+        return save ? R.ok(save).setCode(1).setMsg("保存成功") : R.failed("保存失败!");
+    }
+
+    @Override
+    public R updateSupplier(TSupplier supplier) {
+
+        boolean update = updateById(supplier);
+
+        return update ? R.ok(update).setCode(1).setMsg("更新成功") : R.failed("更新失败!");
     }
 }
