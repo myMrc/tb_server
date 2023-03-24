@@ -2,4 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.gx.mapper.TProductlineMapper">
 
+    <resultMap id="productline" type="com.gx.entity.TProductline"></resultMap>
+
+    <select id="listProductline" resultMap="productline">
+        select * from t_productline as pl
+        join t_supplier as sup
+        join t_user as u
+        where pl.supplier_id = sup.supplier_id
+        and sup.user_id = u.user_id
+        and u.user_id = #{userId}
+        <if test="seachTex != null and seachTex != '' and seachTex != '%undefined%'">
+            and pl.product_line_name like #{seachTex}
+        </if>
+    </select>
+
+    <select id="oneProductline" resultMap="productline">
+        select count(*) from t_productline as pl
+        join t_supplier as sup
+        join t_user as u
+        where pl.supplier_id = sup.supplier_id
+        and sup.user_id = u.user_id
+        and u.user_id = #{userId}
+        and pl.product_line_name = #{productLineName}
+    </select>
 </mapper>

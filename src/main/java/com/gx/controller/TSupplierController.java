@@ -46,11 +46,9 @@ public class TSupplierController {
     }
 
     @PutMapping
-    public R updateSupplier(TSupplier supplier,Principal principal){
+    public R updateSupplier(TSupplier supplier){
 
         if(StringUtils.isEmpty(supplier.getCompanyName()))return R.failed("请输入名称！");
-
-        supplier.setUserId(JSONUtil.toBean(principal.getName(), TUser.class).getUserId());
 
         return supplierService.updateSupplier(supplier);
     }

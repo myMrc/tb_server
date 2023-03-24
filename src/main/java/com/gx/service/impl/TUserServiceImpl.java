@@ -1,9 +1,7 @@
 package com.gx.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.extension.api.R;
-import com.gx.entity.TSupplier;
 import com.gx.entity.TUser;
 import com.gx.mapper.TUserMapper;
 import com.gx.service.ITUserService;

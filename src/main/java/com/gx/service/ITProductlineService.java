@@ -14,5 +14,9 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ITProductlineService extends IService<TProductline> {
 
-    R selectProductline(Integer userId);
+    R selectProductline(Integer userId, String seachTex);
+
+    R addProductline(Integer userId, TProductline productline);
+
+    R updateProductline(TProductline productline);
 }
