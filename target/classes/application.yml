@@ -9,7 +9,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: c123
-    url: jdbc:mysql://localhost:3306/sys_distribution?useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/tb_app?useSSL=false&serverTimezone=UTC
   main:
     banner-mode: off
 #日志
