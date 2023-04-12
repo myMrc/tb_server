@@ -21,12 +21,12 @@ public class JwtUtil {
     private String header;
 
     //生成
-    public String setToken(TUser user){
+    public String setToken(Integer userId){
         Date nowDate = new Date();
         Date expireDate = new Date(nowDate.getTime() + 1000 * expire);
         return Jwts.builder()
                 .setHeaderParam("typ","JWT")
-                .claim("user", user)
+                .setId(userId.toString())
                 .setIssuedAt(nowDate)
                 .setExpiration(expireDate)
                 .signWith(SignatureAlgorithm.HS512,secrst)
@@ -46,7 +46,6 @@ public class JwtUtil {
     //验证
     public boolean isToken(Claims claims){
         boolean before = claims.getExpiration().before(new Date());
-        System.out.println(before);
         return claims.getExpiration().before(new Date());
     }
 }

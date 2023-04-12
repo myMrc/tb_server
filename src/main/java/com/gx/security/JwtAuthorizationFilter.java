@@ -40,8 +40,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter {
         if (jwtUtil.isToken(claims)) {
             throw new JwtException("token 过期");
         }
-        String user = JSONUtil.toJsonStr(claims.get("user"));
-        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(user,null);
+        String id = claims.getId();
+        //String user = JSONUtil.toJsonStr(claims.get("user"));
+        UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(id,null);
         SecurityContextHolder.getContext().setAuthentication(token);
         chain.doFilter(request,response);
     }

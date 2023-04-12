@@ -13,9 +13,9 @@ spring:
   main:
     banner-mode: off
 #日志
-#logging:
-#  level:
-#    root: warn
+logging:
+  level:
+    root: warn
 mybatis-plus:
   global-config:
     banner: off
